@@ -9,13 +9,15 @@
   </head>
 
   <body>
-    <div class='container'>
-      <% if notice %>
-        <div class="alert alert-info"><%= notice %></div>
-      <% end %>
-      <% if alert %>
-        <div class="alert alert-danger"><%= alert %></div>
-      <% end %>
+    <div class='container todo-container'>
+			<% flash.each do |name, msg| %>
+				<% if msg.is_a?(String) %>
+					<div class="alert alert-<%= name.to_s == 'notice' || name.to_s == 'success' ? 'success' : 'danger' %>">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<%= content_tag :div, msg, :id => "flash_#{name}" %>
+					</div>
+				<% end %>
+			<% end %>
       <%= yield %>
     </div>
   </body>
