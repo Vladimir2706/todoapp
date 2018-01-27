@@ -12,13 +12,13 @@ class TasksController < ApplicationController
   end
 
 	def destroy
-		# project = current_user.projects.find(params[:id])
-		# if project.destroy
-    #   flash[:success] = 'Project has been removed!'
-		# else
-    #   flash[:error] = 'Project is not removed!'
-		# end
-    # redirect_to :root
+    task = project.tasks task_params
+		if task.destroy
+      flash[:success] = 'Task has been removed!'
+		else
+      flash[:error] = 'Task is not removed!'
+		end
+    redirect_to :root
 	end
 
 	def update

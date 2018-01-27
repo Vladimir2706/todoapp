@@ -39,10 +39,16 @@
         <%= f.submit %>
       <% end %>
     </div>
-		<div class='col-xs-12 text-line'>
+
+		<div class='col-xs-12'>
       <% project.tasks.each do |task| %>
-        <%= task.name %>
+      <div class='row task-title'>
+        <div class='col-xs-10'>
+          <%= task.name %>
+        </div>
+      </div>
       <% end %>
+      </div>
     </div>
 	<% end %>
 </div>
