@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  before_action :set_project, except: [:create]
+
   def create
     project = current_user.projects.new project_params
     if project.save
@@ -11,8 +13,7 @@ class ProjectsController < ApplicationController
   end
 
 	def destroy
-		project = current_user.projects.find(params[:id])
-		if project.destroy
+		if @project.destroy
       flash[:success] = 'Project has been removed!'
 		else
       flash[:error] = 'Project is not removed!'
@@ -35,4 +36,9 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name)
   end
+
+  def set_project
+    @project = current_user.projects.find(params[:id])
+  end
+
 end

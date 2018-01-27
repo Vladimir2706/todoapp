@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
 
+  before_action :set_project
+  before_action :set_task, except: [:create]
+
   def create
-    project = current_user.projects.find(params[:task][:project_id])
-    task = project.tasks.new task_params
-    if task.save
+    @task = @project.tasks.create task_params
+    if @task.save
       flash[:success] = 'Task has been created!'
     else
       flash[:error] = 'Task is not created!'
@@ -11,15 +13,18 @@ class TasksController < ApplicationController
     redirect_to :root
   end
 
-	def destroy
-    task = project.tasks task_params
-		if task.destroy
+  def destroy
+    if @task.destroy
       flash[:success] = 'Task has been removed!'
-		else
+    else
       flash[:error] = 'Task is not removed!'
-		end
+    end
     redirect_to :root
-	end
+  end
+
+  def delete
+    @task = @project.tasks(params)
+  end
 
 	def update
 		# project = current_user.projects.find(params[:id])
@@ -32,8 +37,15 @@ class TasksController < ApplicationController
 
   private
 
-
   def task_params
     params.require(:task).permit(:name, :done, :project_id)
+  end
+
+  def set_project
+    @project = current_user.projects.find(params[:task][:project_id])
+  end
+
+  def set_task
+    @task = @project.tasks(params)
   end
 end
