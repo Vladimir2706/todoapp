@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
 
-  before_action :set_project
-  before_action :set_task, except: [:create]
+  # before_action :set_project
+  # before_action :set_task, except: [:create]
 
   def create
-    @task = @project.tasks.create task_params
+    project = current_user.projects.find(params[:task][:project_id])
+    @task = project.tasks.create task_params
     if @task.save
       flash[:success] = 'Task has been created!'
     else
@@ -14,16 +15,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if @task.destroy
+
+    task = Task.joins(:project).where('projects.user_id' => current_user.id, 'tasks.id' => params[:id]).first
+    if task && task.destroy
       flash[:success] = 'Task has been removed!'
     else
       flash[:error] = 'Task is not removed!'
     end
     redirect_to :root
-  end
-
-  def delete
-    @task = @project.tasks(params)
   end
 
 	def update
@@ -46,6 +45,6 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = @project.tasks(params)
+    @task = @project.task.find(params[:id])
   end
 end
