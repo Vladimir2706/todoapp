@@ -48,7 +48,9 @@
       <div class='col-xs-12'>
         <div class="row task-title">
           <div class="col-xs-10">
-            <%= task.name %>
+            <%= form_for task do |f| %>
+              <%= f.text_field :name, class: 'task-name-inp', id: "task-inp-#{task.id}", onblur: "$(this).closest('form').submit()" %>
+            <% end %>
           </div>
           <div class='col-xs-2 text-right'>
   					<label class='btn btn-link' for='task-inp-<%= task.id %>'>
