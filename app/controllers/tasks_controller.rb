@@ -15,7 +15,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-
     task = Task.joins(:project).where('projects.user_id' => current_user.id, 'tasks.id' => params[:id]).first
     if task && task.destroy
       flash[:success] = 'Task has been removed!'
@@ -25,13 +24,17 @@ class TasksController < ApplicationController
     redirect_to :root
   end
 
-	def update
-		# project = current_user.projects.find(params[:id])
-		# if project.update project_params
-    #   flash[:success] = 'Project has been updated!'
-		# else
-    #   flash[:success] = 'Project is not updated!'
-		# end
+  def complete
+
+  end
+
+  def update
+    task = Task.joins(:project).where('projects.user_id' => current_user.id, 'tasks.id' => params[:id]).first
+		if task.update task_params
+      flash[:success] = 'Task has been updated!'
+		else
+      flash[:success] = 'Task is not updated!'
+		end
 	end
 
   private
