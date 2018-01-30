@@ -25,7 +25,9 @@ class TasksController < ApplicationController
   end
 
   def complete
-
+    task = Task.joins(:project).where('projects.user_id' => current_user.id, 'tasks.id' => params[:id]).first
+    task.update_attribute(done: true)
+    flash[:notice] = 'Task has been completed!'
   end
 
   def update
