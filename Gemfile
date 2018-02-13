@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
+gem 'pry-rails', :group => :development
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -26,4 +27,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-

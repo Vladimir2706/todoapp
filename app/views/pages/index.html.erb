@@ -49,8 +49,8 @@
         <div class="row task-title">
           <div class="col-xs-10">
             <%= form_for task do |f| %>
-             <%= f.check_box :done %>
-                <%= f.text_field :name, class: 'task-name-inp', id: "task-inp-#{task.id}", onblur: "$(this).closest('form').submit()" %>
+             <%= f.check_box :done, value: task.done %>
+             <%= f.text_field :name, class: 'task-name-inp', id: "task-inp-#{task.id}", onblur: "$(this).closest('form').submit()" %>
             <% end %>
           </div>
           <div class='col-xs-2 text-right'>
