@@ -40,16 +40,13 @@ class TasksController < ApplicationController
   end
 
   def update
-    p params
     task = Task.joins(:project).where('projects.user_id' => current_user.id, 'tasks.id' => params[:id]).first
-    if task.update_attributes(done: 1)
-      binding.pry
-    # if task.update task_params.permit(:name, :done)
+    if task.update(task_params)
       flash[:success] = 'Task has been updated!'
 		else
       flash[:success] = 'Task is not updated!'
 		end
-
+    redirect_to :root
 	end
 
   private
