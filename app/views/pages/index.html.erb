@@ -1,3 +1,4 @@
+<!-- Head -->
 <div class="row text-row">
   <div class="col-xs-2"></div>
   <div class="col-xs-8">
@@ -11,8 +12,14 @@
   </div>
 </div>
 
+<!-- end head -->
+<!-- Body -->
+
 <div class="row text-row">
   <% @projects.each do |project| %>
+
+    <!-- project name_update_delete -->
+
     <div class="col-xs-12 text-line">
       <div class="row project-title">
         <div class="col-xs-10">
@@ -30,6 +37,10 @@
         </div>
       </div>
     </div>
+
+    <!-- end project name_update_delete -->
+    <!-- task_create_update -->
+
     <div class="new-task-form clearfix">
       <div class='col-xs-12'>
         <%= form_for project.tasks.new do |f| %>
@@ -45,11 +56,18 @@
         <% end %>
       </div>
     </div>
+
+    <!-- end task_create_update -->
+    <!-- list of tasks -->
+
     <div class="tasks-group clearfix">
       <% project.tasks.each do |task| %>
         <% if task.persisted? %>
           <div class="col-xs-12 tasks-group-item">
             <div class="clearfix">
+
+              <!-- check_box_and_text_field -->
+
               <div class="col-xs-10">
                 <div class="row">
                   <%= form_for task do |f| %>
@@ -63,6 +81,10 @@
                   <% end %>
                 </div>
               </div>
+
+              <!-- end check_box_and_text_field -->
+              <!-- update_and_delete_tasks -->
+
               <div class="col-xs-2 text-right">
                 <label class="btn btn-link" for="task-inp-<%= task.id %>">
                   <span class="glyphicon glyphicon-pencil"></span>
@@ -71,12 +93,19 @@
                   <span class="glyphicon glyphicon-trash"></span>
                 <% end %>
               </div>
+
+              <!-- end update_and_delete_tasks -->
+
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
   <% end %>
+
+  <!-- end lists of task -->
+  <!-- create_project -->
+
   <div class="row text-row">
     <div class="col-xs-6 col-xs-offset-3">
       <%= form_for current_user.projects.new do |f| %>
@@ -91,4 +120,9 @@
       <% end %>
     </div>
   </div>
+
+  <!-- end create_project -->
+
 </div>
+
+<!-- end Body -->
