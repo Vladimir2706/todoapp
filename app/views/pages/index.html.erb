@@ -38,7 +38,7 @@
             <%= f.text_field :name, class: 'form-control', placeholder: 'Start typing to create a task...' %>
             <div class="input-group-btn">
               <button class="btn btn-success" type="submit">
-                <span>Create Project</span>
+                <span>Create Task</span>
               </button>
             </div>
           </div>
@@ -54,6 +54,7 @@
                 <div class="row">
                   <%= form_for task do |f| %>
                     <div class="col-xs-1">
+                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                       <%= f.check_box :done, onchange: "$(this).closest('form').submit()" %>
                     </div>
                     <div class="col-xs-11">
