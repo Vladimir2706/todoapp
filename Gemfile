@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "~>2.4.2"
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
@@ -14,7 +15,8 @@ gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 gem 'pry-rails', :group => :development
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
-gem 'haml-rails'
+gem 'haml', '~> 5.0', '>= 5.0.4'
+gem 'haml-rails', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
