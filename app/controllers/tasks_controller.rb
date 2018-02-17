@@ -49,12 +49,16 @@ class TasksController < ApplicationController
     redirect_to :root
 	end
 
-
+  def deadline
+    task = Task.joins(:project).where('projects.user_id' => current_user.id, 'tasks.id' => params[:id]).first
+    current_task.add(params[:deadline])
+    redirect_to :root
+  end
 
   private
 
   def task_params
-    params.require(:task).permit(:name, :done, :project_id)
+    params.require(:task).permit(:name, :done, :project_id, :deadline)
   end
 
   def set_project

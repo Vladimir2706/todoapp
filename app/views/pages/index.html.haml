@@ -42,6 +42,9 @@
                 .task-tbl-cell.b-left.task-tbl-cell-wight-100
                   = f.text_field :name, class: 'task-name-inp', id: "task-inp-#{task.id}", onblur: "$(this).closest('form').trigger('submit')"
                 .task-tbl-cell.text-right.b-left.task-tbl-cell-wight-160
+                  .btn.btn-link.task-item-handle
+                  %input{:type => "date", id: "task-inp-#{task.id}", method: :deadline}
+                    %span.glyphicon.glyphicon-time
                   %span.btn.btn-link.task-item-handle
                     %span.glyphicon.glyphicon-move
                   %label.btn.btn-link{:for => "task-inp-#{task.id}"}
