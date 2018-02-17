@@ -59,4 +59,3 @@ FROM projects
 LEFT JOIN tasks ON projects.id = tasks.projects_id                   
 WHERE tasks.done='true'                   
 GROUP BY project_name HAVING COUNT(tasks.id) > 10                      
-GROUP BY projects_id;

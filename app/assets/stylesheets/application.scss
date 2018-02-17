@@ -186,3 +186,21 @@ body {
 .tasks-group-item.task-done .task-name-inp {
 	text-decoration: line-through;
 }
+.task-create-button{
+  font-weight: bold;
+  width: 146px;
+}
+.task-tbl-cell-wight-40{
+  width: 40px;
+}
+.task-tbl-cell-wight-100{
+  width: 100%;
+}
+.task-tbl-cell-wight-160{
+  width: 160px;
+  white-space: nowrap;
+}
+.task-tbl-dualline{
+  display: table-cell;
+  width: 3px;
+}
