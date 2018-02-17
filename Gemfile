@@ -13,6 +13,8 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 gem 'pry-rails', :group => :development
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

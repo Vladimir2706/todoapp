@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :projects
   resources :tasks
 
+  post '/update_tasks_order/:id' => 'projects#update_tasks_order'
+
 end

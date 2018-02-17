@@ -28,7 +28,14 @@ class ProjectsController < ApplicationController
 		else
       flash[:success] = 'Project is not updated!'
 		end
+		redirect_to :root
 	end
+
+  def update_tasks_order
+    params[:order].each.with_index do |task_id, index|
+      @project.tasks.update(task_id, { order: index })
+    end
+  end
 
   private
 
