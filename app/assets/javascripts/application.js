@@ -1,5 +1,6 @@
 //= require jquery
 //= require bootstrap/alert
+//= require turbolinks
 //= require_tree .
 
 $(function(){
