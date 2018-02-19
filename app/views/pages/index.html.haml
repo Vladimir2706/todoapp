@@ -14,8 +14,11 @@
     .col-xs-12.text-line
       .row.project-title
         .col-xs-10
-          = form_for project, authenticity_token: true do |f|
-            = f.text_field :name, class: 'project-name-inp', id: "project-inp-#{project.id}", onblur: "$(this).closest('form').trigger('submit')"
+          .col-xs-1
+            %span.glyphicon.glyphicon-calendar.p-icon.icon-grey
+          .col-xs-9
+            = form_for project, authenticity_token: true do |f|
+              = f.text_field :name, class: 'project-name-inp', id: "project-inp-#{project.id}", onblur: "$(this).closest('form').trigger('submit')"
         .col-xs-2.text-right
           %label.btn.btn-link{:for => "project-inp-#{project.id}"}
             %span.glyphicon.glyphicon-pencil
@@ -43,8 +46,6 @@
                   = f.text_field :name, class: 'task-name-inp', id: "task-inp-#{task.id}", onblur: "$(this).closest('form').trigger('submit')"
                 .task-tbl-cell.text-right.b-left.task-tbl-cell-wight-160
                   .btn.btn-link.task-item-handle
-                  %input{:type => "date", id: "task-inp-#{task.id}", method: :deadline}
-                    %span.glyphicon.glyphicon-time
                   %span.btn.btn-link.task-item-handle
                     %span.glyphicon.glyphicon-move
                   %label.btn.btn-link{:for => "task-inp-#{task.id}"}
