@@ -25,3 +25,4 @@
 # Configuration files
 config/database.yml
 config/database.yml
+database.yml.example
