@@ -50,7 +50,7 @@
                     %span.glyphicon.glyphicon-move
                   %label.btn.btn-link{:for => "task-inp-#{task.id}"}
                     %span.glyphicon.glyphicon-pencil
-                  = link_to task, method: :delete, class: 'btn btn-link' do
+                  = link_to task, method: :delete, data: { confirm: "Are You Shure?" }, class: 'btn btn-link' do
                     %span.glyphicon.glyphicon-trash
 .row.text-row
   .col-xs-6.col-xs-offset-3
