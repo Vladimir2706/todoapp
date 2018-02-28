@@ -1,4 +1,3 @@
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "devise_bootstrap_views";
@@ -197,7 +196,7 @@ body {
   width: 100%;
 }
 .task-tbl-cell-wight-160{
-  width: 300px;
+  width: 160px;
   white-space: nowrap;
 }
 .task-tbl-dualline{
@@ -216,4 +215,9 @@ body {
 .icon-grey{
   color: grey;
   opacity: 0.65;
+}
+.deadline-size {
+  width: 150px;
+  padding-right: 10px;
+  white-space: nowrap;
 }

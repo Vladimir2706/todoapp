@@ -18,6 +18,10 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'haml-rails', '~> 1.0'
 gem 'rubocop', '~> 0.52.1'
+gem 'rspec-rails'
+gem 'factory_bot', '~> 4.8', '>= 4.8.2'
+gem 'factory_girl', '~> 4.9'
+gem 'factory_girl_rails', '~> 4.9'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -32,8 +36,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'factory_girl'
+
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

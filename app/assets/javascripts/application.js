@@ -6,4 +6,3 @@
 
 //= require app/alerts
 //= require app/sortable
-
