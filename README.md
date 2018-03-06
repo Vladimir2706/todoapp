@@ -2,15 +2,15 @@
 
 ## 1.  get all statuses, not repeating, alphabetically ordered
 
-SELECT DISTINCT status          
+SELECT DISTINCT done          
 FROM tasks WHERE done is NOT null          
-ORDERED BY status;
+ORDERED BY done;
 
 ## 2.  get the count of all tasks in each project, order by tasks count descending
 
 SELECT projects.id AS projects_id, projects.name AS projects_name, COUNT(tasks.id) AS task_count     
 FROM tasks     
-LEFT JOIN projects ON tasks. projects_id = projects.id          
+LEFT JOIN projects ON tasks.project_id = projects.id          
 GROUP BY projects_id, projects_name               
 ORDER BY task_count DESC;
 
@@ -18,7 +18,7 @@ ORDER BY task_count DESC;
 
 SELECT projects.id AS projects_id, projects.name AS projects_name, COUNT(tasks.id) AS task_count           
 FROM tasks   
-LEFT JOIN projects ON tasks. projects_id = projects.id                
+LEFT JOIN projects ON tasks.project_id = projects.id                
 GROUP BY projects_id, projects_name                                    
 ORDER BY projects_name;
 
@@ -32,23 +32,23 @@ WHERE name LIKE 'N%';
 
 SELECT projects.name AS projects_name, COUNT(tasks.id) AS tasks_count               
 FROM projects      
-LEFT JOIN tasks ON projects.id=tasks.projects_id               
+LEFT JOIN tasks ON projects.id = tasks.project_id               
 WHERE projects.name LIKE '%a%'                
-GROUP BY list_name;
+GROUP BY projects_name;
 
 ## 6.  get the list of tasks with duplicate names. Order alphabetically
 
 SELECT tasks.name AS name, COUNT(t2.name) AS t_count                 
 FROM tasks     
-LEFT JOIN tasks AS t2 ON tasks.name=t2.name                     
+LEFT JOIN tasks AS t2 ON tasks.name = t2.name                     
 GROUP BY tasks.name HAVING COUNT(t2.name) > 1;
 
 ## 7.  get the list of tasks having several exact matches of both name and status, from the project ‘Garage’. Order by matches count
 
 SELECT tasks.name AS task_name, COUNT(tasks.name) AS task_count                
 FROM tasks       
-LEFT JOIN projects ON tasks.projects_id = projects.id                    
-WHERE projects.name='Garage'                         
+LEFT JOIN projects ON tasks.project_id = projects.id                    
+WHERE projects.name = 'Garage'                         
 GROUP BY tasks.name                        
 ORDER BY task_count;
 
@@ -56,6 +56,6 @@ ORDER BY task_count;
 
 SELECT projects.name AS projects_name, COUNT(tasks.id) AS task_count                   
 FROM projects       
-LEFT JOIN tasks ON projects.id = tasks.projects_id                   
+LEFT JOIN tasks ON projects.id = tasks.project_id                   
 WHERE tasks.done='true'                   
-GROUP BY project_name HAVING COUNT(tasks.id) > 10;                   
+GROUP BY projects_name HAVING COUNT(tasks.id) > 10;                   
